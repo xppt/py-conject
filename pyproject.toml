@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "conject"
+version = "0.4.0"
+description = "Dependency Injection and configuration library."
+authors = ["xppt <21246102+xppt@users.noreply.github.com>"]
+readme = "README.md"
+homepage = "https://github.com/xppt/py-conject"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+async-exit-stack = "*"
+async-generator = "*"
+pydantic = "*"
+
+[tool.poetry.dev-dependencies]
+asynctest = "*"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

@@ -1,0 +1,22 @@
+name: Upload package to PyPI
+on: push
+
+jobs:
+  build-and-upload:
+    name: Build and upload
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+
+      - run: python -m pip install --user build
+
+      - run: python -m build --sdist --wheel --outdir dist/
+
+      - if: startsWith(github.ref, 'refs/tags/')
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
